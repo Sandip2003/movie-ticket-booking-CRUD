@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@theme{
+    --color-primary: #f84565;
+    --color-primary-dull: #D63854
+}
+
+*{
+    font-family: "Outfit", sans-serif;
+    scrollbar-color: #787777 #1e1e1e;
+    scrollbar-width: thin;
+}
+
+body{
+    color: #fff;
+    background-color: #050000;
+}
+
