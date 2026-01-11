@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 @theme{
     --color-primary: #f84565;
@@ -15,5 +17,74 @@
 body{
     color: #fff;
     background-color: #050000;
+}
+
+/* Custom Slider Styles */
+.slick-slider {
+    outline: none;
+}
+
+.slick-slide {
+    outline: none;
+}
+
+.slick-slide img {
+    outline: none;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    font-size: 24px;
+    color: #fff !important;
+}
+
+.slick-dots {
+    bottom: 25px; 
+    z-index: 10;
+}
+
+.slick-dots li {
+    margin: 0 8px;
+}
+
+/* .slick-dots li button::before {
+    font-size: 12px;
+    color: #888 !important;
+    opacity: 0.7;
+}
+
+.slick-dots li.slick-active button::before {
+    color: #f84565 !important;
+    opacity: 1;
+} */
+.slick-dots li button::before {
+    font-size: 12px;
+    color: #888 !important;
+    opacity: 0.7;
+}
+
+.slick-dots li.slick-active button::before {
+    color: #f84565 !important;
+    opacity: 1;
 }
 

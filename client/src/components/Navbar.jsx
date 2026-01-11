@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { MenuIcon, SearchIcon, XIcon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Listen for storage changes (for when user logs in from another tab/window)
+    const handleStorageChange = () => {
+      const status = localStorage.getItem("isLoggedIn") === "true";
+      setIsLoggedIn(status);
+    };
+    
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("cine_auth");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("cine_user_email");
+    setIsLoggedIn(false);
+    setIsOpen(false);
+    navigate("/");
+  };
 
   return (
     <div className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5">
@@ -24,7 +48,7 @@ const Navbar = () => {
       >
         <XIcon
           className="md:hidden absolute top-6 right w-6 h-6 cursor-pointer hover:text-primary transition-colors duration-200 "
-          onClick={() => setIsOpen()}
+          onClick={() => setIsOpen(false)}
         />
 
         <Link
@@ -81,11 +105,19 @@ const Navbar = () => {
 
       <div className="md:flex items-center gap-8">
         <SearchIcon className="max-md:hidden w-6 h-6 cursor-pointer hover:text-primary transition-colors duration-200 hover:scale-110" />
-        <button 
-          onClick={() => navigate('/login')}
-          className="px-4 py-1 sm:px-7 sm:py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer hover:shadow-lg hover:shadow-primary/50 hover:scale-105 duration-200">
-          Login
-        </button>
+        {isLoggedIn ? (
+          <button 
+            onClick={handleLogout}
+            className="px-4 py-1 sm:px-7 sm:py-2 bg-red-600 hover:bg-red-700 transition rounded-full font-medium cursor-pointer hover:shadow-lg hover:shadow-red-600/50 hover:scale-105 duration-200">
+            Logout
+          </button>
+        ) : (
+          <button 
+            onClick={() => navigate('/login')}
+            className="px-4 py-1 sm:px-7 sm:py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer hover:shadow-lg hover:shadow-primary/50 hover:scale-105 duration-200">
+            Login
+          </button>
+        )}
       </div>
 
       <MenuIcon

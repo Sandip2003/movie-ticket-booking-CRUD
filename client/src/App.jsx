@@ -8,18 +8,25 @@ import SeatLayout from './pages/SeatLayout'
 import MovieDetails from './pages/MovieDetails'
 import MyBookings from './pages/MyBookings'
 import Favorite from './pages/Favorite'
+import LoginPage from './components/LoginPage'
+import SignUp from './pages/SignUp'
+import SignUpPage from './components/SignUpPage'
+import BannerSlider from './components/BannerSlider'
+
 import { Toaster } from 'react-hot-toast'
 
 
 const App = () => {
 
-  const isAdminRoute = useLocation().pathname.includes('/admin')
+  const location = useLocation();
+  const isAdminRoute = location.pathname.includes('/admin');
+  const isAuthRoute = location.pathname === '/login' || location.pathname === '/signup';
 
 
   return (
     <>
        <Toaster />
-       {!isAdminRoute && <Navbar/>}
+       {!isAdminRoute && !isAuthRoute && <Navbar/>}
        <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/movies' element={<Movies />} />
@@ -27,8 +34,12 @@ const App = () => {
         <Route path='/movies/:id/date' element={<SeatLayout />} />
         <Route path='/my-bookings' element={<MyBookings />} />
         <Route path='/favorite' element={<Favorite />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignUp />} />
+        
+        
        </Routes>
-       {!isAdminRoute && <Footer/>}
+       {!isAdminRoute && !isAuthRoute && <Footer/>}
 
     </>
   )

@@ -1,8 +1,11 @@
+import BannerSlider from '../components/BannerSlider'
 import React from 'react'
 
 const Home = () => {
   return (
-    <div></div>
+    <div>
+      <BannerSlider />
+    </div>
   )
 }
 
