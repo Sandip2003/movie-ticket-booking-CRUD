@@ -1,12 +1,16 @@
-import BannerSlider from '../components/BannerSlider'
-import React from 'react'
+import FeaturedSection from "../components/FeaturedSection";
+import BannerSlider from "../components/BannerSlider";
+import React from "react";
 
 const Home = () => {
   return (
     <div>
-      <BannerSlider />
+      <div className="pt-20">
+        <BannerSlider />
+      </div>
+      <FeaturedSection />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

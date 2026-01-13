@@ -1,6 +1,8 @@
 // import { banners } from '../assets/constants'
 // import React from 'react'
 // import Slider from 'react-slick'
+// import 'slick-carousel/slick/slick.css'
+// import 'slick-carousel/slick/slick-theme.css'
 
 // const BannerSlider = () => {
 //   const settings = { 
@@ -9,24 +11,23 @@
 //     infinite: true,
 //     autoplay: true,
 //     autoplaySpeed: 2000,
-//     speed: 500,
+//     speed: 800,
 //     arrows: true,
 //     dots: true,
-//     fade: false,
-//     cssEase: 'linear',
+//     centerMode: true,
+//     centerPadding: "220px",
 //     pauseOnHover: true,
-//     adaptiveHeight: false
 //   }
 
 //   return (
-//     <div className='w-full bg-black pt-20'>
+//     <div className="w-full bg-black mt-[80px] overflow-hidden">
 //       <Slider {...settings}> 
 //         {banners.map((banner, i) => (
-//           <div key={i} className='outline-none focus:outline-none'>
+//           <div key={i} className="px-2 outline-none">
 //             <img 
 //               src={banner} 
 //               alt={`banner-${i}`}
-//               className='rounded-xl w-full h-[280px] object-cover'
+//               className="rounded-xl w-full h-[280px] object-cover"
 //             />
 //           </div>
 //         ))}
@@ -36,6 +37,8 @@
 // }
 
 // export default BannerSlider
+
+
 import { banners } from '../assets/constants'
 import React from 'react'
 import Slider from 'react-slick'
@@ -55,22 +58,39 @@ const BannerSlider = () => {
     pauseOnHover: true,
   }
 
+//   return (
+//     <div className="w-full bg-black relative overflow-visible">
+//       <Slider {...settings}> 
+//         {banners.map((banner, i) => (
+//           <div key={i} className="px-2 outline-none">
+//             <img 
+//               src={banner} 
+//               alt={`banner-${i}`}
+//               className="rounded-xl w-full h-280px object-cover"
+//             />
+//           </div>
+//         ))}
+//       </Slider>
+//     </div>
+//   )
+// }
+
+// export default BannerSlider
+
   return (
-    <div className="w-full bg-black mt-[80px] overflow-hidden">
-      <Slider {...settings}> 
+    <div className="w-full bg-black  overflow-visible">
+      <Slider {...settings}>
         {banners.map((banner, i) => (
-          <div key={i} className="px-2 outline-none">
-            <img 
-              src={banner} 
+          <div key={i} className="px-2">
+            <img
+              src={banner}
               alt={`banner-${i}`}
-              className="rounded-xl w-full h-[280px] object-cover"
+              className="w-full h-300px rounded-xl object-cover"
             />
           </div>
         ))}
       </Slider>
     </div>
-  )
-}
-
+  );
+};
 export default BannerSlider
-

@@ -15,7 +15,7 @@ import {
   Film,
 } from "lucide-react";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+
 
 const SignUpPage = () => {
   const navigate = useNavigate();

@@ -12,8 +12,11 @@ import LoginPage from './components/LoginPage'
 import SignUp from './pages/SignUp'
 import SignUpPage from './components/SignUpPage'
 import BannerSlider from './components/BannerSlider'
-
 import { Toaster } from 'react-hot-toast'
+import MovieCard from './components/MovieCard'
+import FeaturedSection from './components/FeaturedSection'
+
+
 
 
 const App = () => {
@@ -36,8 +39,6 @@ const App = () => {
         <Route path='/favorite' element={<Favorite />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignUp />} />
-        
-        
        </Routes>
        {!isAdminRoute && !isAuthRoute && <Footer/>}
 
